@@ -5,18 +5,21 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="statinf",
-    version="1.0.4",
+    version="1.0.30",
     author="Florian Felice",
     author_email="florian.felice@outlook.com",
     description="A library for statistics and causal inference",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/florianfelice/statinf",
+    url="https://www.florianfelice.com/statinf",
     packages=setuptools.find_packages(),
     install_requires=[
           "pandas>=0.24.1",
           "numpy>=1.16.3",
-          "scipy>=1.2.1"
+          "scipy>=1.2.1",
+          "theano>=1.0.4",
+          "pycof>=1.0.19",
+          "matplotlib>=3.1.1"
       ],
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -12,7 +12,7 @@ import argparse
 ## Define 
 library = 'statinf'
 desc = "A library for statistics and causal inference"
-requirements = ['pandas>=0.24.1', 'numpy>=1.16.3', 'scipy>=1.2.1']
+requirements = ['pandas>=0.24.1', 'numpy>=1.16.3', 'scipy>=1.2.1', 'theano>=1.0.4', 'pycof>=1.0.19', 'matplotlib>=3.1.1']
 
 
 
@@ -24,6 +24,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--version", default=None, help="New version to load")
 parser.add_argument("-t", "--test", action="store_true", help="Publish to PyPi test")
 parser.add_argument("-p", "--publish", action="store_true", help="Publish to Git")
+parser.add_argument("-m", "--message", default='', help="Git commit message")
 
 args = parser.parse_args()
 
@@ -103,7 +104,8 @@ else:
 # Commit to git and push
 if args.publish:
     os.system(f"git add --all")
-    os.system(f"git commit -a -m 'Upload version {new_version} to pypi'")
+    os.system(f"git tag -a v{new_version} -m 'Version {new_version} on pypi. {args.message}'")
+    os.system(f"git commit -a -m 'Upload version {new_version} to pypi. {args.message}'")
     os.system(f"git push")
     git_update = 'and changes pushed to git'
 else:
